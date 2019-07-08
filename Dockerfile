@@ -16,6 +16,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update
 RUN apt-get install -y nodejs
 #RUN     pip install Twisted==18.7.0
+RUN pip install Twisted>=13.2.0
 
 RUN     pip install pytz
 RUN     git clone https://github.com/graphite-project/whisper.git /src/whisper            &&\
