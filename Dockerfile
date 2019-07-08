@@ -15,7 +15,8 @@ RUN pip install gunicorn
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update
 RUN apt-get install -y nodejs
-RUN     pip install Twisted==18.7.0
+#RUN     pip install Twisted==18.7.0
+
 RUN     pip install pytz
 RUN     git clone https://github.com/graphite-project/whisper.git /src/whisper            &&\
         cd /src/whisper                                                                   &&\
@@ -28,13 +29,13 @@ RUN     git clone https://github.com/graphite-project/carbon.git /src/carbon    
         python3.6 setup.py install
 
 
-add conf/carbon.conf.template /opt/graphite/conf/carbon.conf.template
-add conf/storage-schemas.conf /opt/graphite/conf/storage-schemas.conf
-add	./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD conf/carbon.conf.template /opt/graphite/conf/carbon.conf.template
+ADD conf/storage-schemas.conf /opt/graphite/conf/storage-schemas.conf
+ADD	./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN mkdir /kube-watch
 RUN cd /kube-watch && npm install hashring kubernetes-client@5 json-stream
-add kube-watch.js /kube-watch/kube-watch.js
+ADD kube-watch.js /kube-watch/kube-watch.js
 
 EXPOSE 2003
 
