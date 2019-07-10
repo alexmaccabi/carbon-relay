@@ -144,6 +144,3 @@ MIN_RESET_RATIO=0.9
 # below (2*CARBON_METRIC_INTERVAL) + 1 second will result in a lot of
 # reset connections for no good reason.
 MIN_RESET_INTERVAL=121
-ENABLE_TAGS = False
-#https://github.com/graphite-project/graphite-web/issues/2248
-TAGDB=None
